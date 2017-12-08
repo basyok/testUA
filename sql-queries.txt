@@ -1,0 +1,14 @@
+﻿#Выяснить общую стоимость покупок для каждого из магазинов
+select s.name, sum(p.price) from store as s inner join purchase as p
+on s.id = p.store_id
+group by s.id;
+
+#Вывести перечень всех покупок
+select s.name, p.product, p.price from store as s inner join purchase as p
+on s.id = p.store_id;
+
+#Выбрать покупки, цена которых больше или равна 100 руб., сгруппировать по магазинам и #посчитать количество таких покупок
+select s.name, count(p.id) as ge100 from store as s inner join purchase as p
+on s.id = p.store_id
+where p.price >= 100
+group by s.id;
